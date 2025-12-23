@@ -2,13 +2,16 @@
 
 A remote copy of all my configurations to allow for better syncing between machines
 
-### Installation
+### Instructions
 
-Run `sh ~/.dotfiles/make.sh` to do the following:
+On your machine, clone this repo to your preferred location. At the root directory, make sure you have a `.bash_profile` file and copy the following snippet into it:
 
-1. Symlink dotfiles from `~/` to the `/preferences/` directory
-2. Import Terminal preferences
+```
+test -f ~/{REPO_LOCATION}/preferences/.bash_profile && source ~/{REPO_LOCATION}/preferences/.bash_profile
+```
+
+Any machine-specific configurations needed can then be written below.
 
 ### Notes
 
-* Private and machine-specific bash settings are held in `~/.bashrc_local` and `~/.bash_profile_local`.
+If `zsh` is the current shell on the machine, run `chsh -s /bin/bash` to switch to `bash`.
