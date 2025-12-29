@@ -70,24 +70,25 @@ __git_complete gb _git_branch
 alias weather='curl https://wttr.in/Brooklyn+NY?1FuQ'
 
 # Git aliases
+DEFAULT_BRANCH=${DEFAULT_BRANCH:-master}
 alias gs='git status --short --branch'
 alias gl='git --no-pager log --color --pretty=format:"%C(yellow)%h%C(reset)%C(bold red)%d%C(reset) %s %C(black)— %an (%ad)%C(reset)" --abbrev-commit --relative-date | emojify | less --RAW-CONTROL-CHARS'
 alias gd='git diff'
 alias gdc='git show $COMMIT'
 alias gdsc='git show --name-status $COMMIT'
-alias gdb='git diff origin/master $(git rev-parse --abbrev-ref HEAD)'
+alias gdb='git diff origin/$DEFAULT_BRANCH $(git rev-parse --abbrev-ref HEAD)'
 alias gp='git pull'
 alias gpr='git pull --rebase origin' #must include branch name
 alias gprb='git pull --rebase origin $(git rev-parse --abbrev-ref HEAD)'
-alias gprm='git pull --rebase origin master'
-alias gri='git rebase -i master'
+alias gprm='git pull --rebase origin $DEFAULT_BRANCH'
+alias gri='git rebase -i $DEFAULT_BRANCH'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias amend='git commit -a --amend'
 alias gst='git stash'
 alias gsta='git stash apply'
 alias gco='git checkout'
-alias gcom='git checkout master && git branch'
+alias gcom='git checkout $DEFAULT_BRANCH && git branch'
 alias gb='git branch'
 alias gcm='git add . && git commit -m' #must include commit message
 alias gcp='git cherry-pick'
