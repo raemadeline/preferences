@@ -1,4 +1,9 @@
-test -f .git-completion.bash && source .git-completion.bash
+FILE="$(dirname "${BASH_SOURCE[0]}")/.git-completion.bash"
+if [ -f $FILE ]; then
+   source $FILE
+else
+   echo "File $FILE does not exist."
+fi
 
 #setup PROMPT_COMMAND, which gets run before each prompt is printed
 #save the return code for later use in my prompt
